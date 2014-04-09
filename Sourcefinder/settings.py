@@ -29,6 +29,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+TEMPLATE_DIRS = (
+        'templates',
+        'findSource/templates/'
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -85,3 +90,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_LOADERS = (
+        'djmako.MakoLoader',
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+)
+
+MAKO_TEMPLATE_DIRS = TEMPLATE_DIRS

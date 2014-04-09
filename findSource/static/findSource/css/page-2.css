@@ -1,0 +1,31 @@
+/*-------
+myVita
+-------*/
+.myVita .labelBar-2 h3{font-size: 16px; color: #057535; float: left;}
+.myVita .labelBar-2 .ness{margin-left: 10px; float: left; line-height: 24px;}
+.myVita .labelBar-2 a{float: right;}
+
+.myVita .vita-2{padding: 0 20px; margin-top: 20px;}
+
+.vita-2 li{width:100%; float:left; margin-bottom: 15px;}
+.vita-2 label,.vita-2 .label {float:left; width:100px; line-height: 27px; text-align: right;}
+
+.vita-2 input{border:1px solid #CECECE; padding: 5px 2px; width: 100%; margin-right: 5px;}
+.vita-2 .iptErr{border-color:#fc0202 !important;}
+.vita-2 textarea{border: 1px solid #CECECE; display: block; width:555px; padding: 5px 2px;resize:vertical; }
+
+.vita-2 .selectList{float: left; height:24px; width:101px; margin-right: 4px;}
+.vita-2 .selectList dt{border:1px solid #CECECE;}
+
+.vita-2 .btnBar{margin-bottom:30px; line-height: 26px}
+.vita-2 .btnBar .save{margin:0 10px 0 100px;}
+.vita-2 .btnBar .save-1{margin:0 10px 0 100px; line-height: 26px; vertical-align: middle;}
+.vita-2 .btnBar a{vertical-align: middle; line-height: 26px;}
+.vita-2-in{border-top: 1px dashed #EDEDED;}
+.vita-2-inn{border-top:none;}
+.vitaLabel{margin: 20px 0;}
+.vitaLabel-2{padding-bottom: 5px; border-bottom: 1px dashed #ededed;}
+.vita-2 .vita{margin-top: 20px;}
+.vita-2 .vita span{width:90px; margin-right: 10px; text-align: right;}
+.vita-2 .vita .vc{width:555px; text-align: left;}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sourcefinder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+${ self.css_files() }
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="/findSource">Sourcefinder</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <!--li class="active"><a href="/login">Home</a></li-->
+                <li><a href="/login">About</a></li>
+                <li><a href="/register">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="content">
+            ${ next.body() }
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <p> Copyright 2013 &copy; Purple Team</p>
+    </footer>
+</div>
+
+${ self.js_defer() }
+
+</body>
+</html>
+
+<%def name="js_defer()">
+    <script src="/static/findSource/js/jquery-1.10.2.min.js"> </script>
+    <script src="/static/findSource/js/bootstrap.min.js"> </script>
+</%def>
+
+
+<%def name="css_files()">
+    <link href="/static/findSource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/findSource/css/base.css" rel="stylesheet">
+</%def>
