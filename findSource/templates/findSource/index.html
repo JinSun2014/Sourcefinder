@@ -1,8 +1,15 @@
 <%inherit file="base.html" />
-
+<%def name="js_defer()">
+    ${ parent.js_defer()}
+    <script type="text/javasrcipt" src="/static/findSource/js/findSource.js"></srcipt>
+</%def>
 
 <h3>Hello, this is Sourcefinder</h3>
+<br>
 
-</body>
-</html>
+<div class="form-group">
+    <label for="user-input">Please input an url for article</label>
+    <input class="form-control" id="user-input" placeholder="http://">
+</div>
+<button id="search" class="btn btn-default">Search</button>
 
