@@ -1,4 +1,7 @@
 $("#search").click(function (){
-    val input = $("#user-input").val();
-    window.location.href = "http://google.com";
+    var input = $('#user-input').val();
+    if (input){
+        current_url = window.location.pathname;
+        window.location.href = current_url + input;
+    }
 });

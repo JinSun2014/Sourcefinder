@@ -19,5 +19,6 @@ class ResultView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ResultView, self).get_context_data(**kwargs)
-        context['url'] = self.kwargs['url']
+        url = self.kwargs['url']
+        context['url'] = url
         return context
