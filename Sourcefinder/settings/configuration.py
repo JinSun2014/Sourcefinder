@@ -1,1 +1,1 @@
-from settings.heroku import *
+from Sourcefinder.settings.heroku import *

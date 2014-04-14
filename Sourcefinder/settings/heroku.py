@@ -1,7 +1,7 @@
-from settings import *
+from Sourcefinder.settings import *
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'wsgi.heroku.application'
+WSGI_APPLICATION = 'Sourcefinder.wsgi.heroku.application'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
