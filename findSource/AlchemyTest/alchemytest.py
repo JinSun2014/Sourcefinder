@@ -1,3 +1,5 @@
+import sys
+
 from alchemyapi import AlchemyAPI
 alchemyapi = AlchemyAPI()
 
@@ -8,7 +10,7 @@ myText = "What do you think about doing this on Saturday?"
 response = alchemyapi.sentiment("text", myText)
 print "Sentiment: ", response["docSentiment"]["type"]
 
-myUrl = "http://news.yahoo.com/sebelius-health-care-launch-terribly-flawed-145354241--finance.html"
+myUrl = sys.argv[1]
 
 response = alchemyapi.title("url", myUrl)
 print "Title: ", response["title"]
@@ -18,7 +20,7 @@ print "Author: ", response["author"]
 
 response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
-print(json.dumps(response, indent=4))
+#print(json.dumps(response, indent=4))
 
 
 if response['status'] == 'OK':
@@ -54,4 +56,3 @@ else:
 # 		print ""
 # else:
 # 	print("Error in Keyword extraction")
-
