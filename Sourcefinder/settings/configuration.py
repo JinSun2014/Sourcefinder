@@ -1,0 +1,1 @@
+from settings.heroku import *
