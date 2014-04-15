@@ -85,7 +85,7 @@ STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-        'findSource/static/',
+        '/findSource/static/',
 )
 
 
