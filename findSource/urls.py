@@ -7,8 +7,7 @@ urlpatterns = patterns('',
         url(r'^(?P<url>\S+)$', views.ResultView.as_view(), name='result'),
 )
 
-from django.conf import settings
+urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^findSource/static/(?P<path>.*)$', 'serve'),
+    )
 
-urlpatterns += patterns('',
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-)

@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     url(r'^findSource/', include('findSource.urls', namespace = 'findSource')),
 )
 
-if not settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^findSource/static/(?P<path>.*)$', 'serve'),
     )
+
