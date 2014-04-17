@@ -48,7 +48,7 @@ def readArticle(myUrl):
 	else:
 		print "Error in concept call"
 
-	return "Hello"
+	return [1,2,3,4]
 
 	# print ""
 	# print "Keywords"
