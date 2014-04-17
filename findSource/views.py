@@ -1,6 +1,7 @@
 #from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
+from findSource.AlchemyTest.alchemytest import readArticle
 
 # Create your views here.
 
@@ -15,10 +16,12 @@ class ResultView(ListView):
     template_name = 'findSource/result.html'
 
     def get_queryset(self):
-        return [1, 2, 3, 4, 5]
+        url = self.kwargs['userInput']
+        list = readArticle(url)
+        return list
 
     def get_context_data(self, **kwargs):
         context = super(ResultView, self).get_context_data(**kwargs)
-        url = self.kwargs['url']
-        context['url'] = url
+        user_input = self.kwargs['userInput']
+        context['userInput'] = user_input
         return context

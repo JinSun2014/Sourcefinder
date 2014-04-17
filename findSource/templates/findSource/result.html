@@ -1,3 +1,19 @@
 <%inherit file="base.html" />
-<h3>Hello, this is result page</h3>
-<p>The url of input is:  ${url}</p>
+<%def name="title()">Sourcerous - result</%def>
+<%def name="js_defer()">
+    ${ parent.js_defer()}
+    <script type="text/javascript" src="/static/findSource/js/findSource.js"></script>
+</%def>
+
+<%def name="css_files()">
+    ${ parent.css_files() }
+</%def>
+
+<div class="col-md-12">
+    % if object_list:
+        % for item in object_list:
+            ${ item }<br>
+        % endfor
+    % endif
+</div>
+

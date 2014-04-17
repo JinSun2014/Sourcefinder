@@ -1,7 +1,11 @@
 <%inherit file="base.html" />
+<%def name="title()">Sourcerous</%def>
 <%def name="js_defer()">
     ${ parent.js_defer()}
     <script type="text/javascript" src="/static/findSource/js/findSource.js"></script>
+</%def>
+<%def name="css_files()">
+    ${ parent.css_files() }
 </%def>
 
 <h3>Hello, this is Sourcerous</h3>
