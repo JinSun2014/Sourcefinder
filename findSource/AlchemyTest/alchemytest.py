@@ -8,17 +8,21 @@ import json
 
 def readArticle(myUrl):
 
-	myText = "What do you think about doing this on Saturday?"
-	response = alchemyapi.sentiment("text", myText)
-	print "Sentiment: ", response["docSentiment"]["type"]
+	#return list
+	output = [];
+
+	#early test
+	#myText = "What do you think about doing this on Saturday?"
+	#response = alchemyapi.sentiment("text", myText)
+	#print "Sentiment: ", response["docSentiment"]["type"]
 
 	#myUrl = sys.argv[1]
 
 	response = alchemyapi.title("url", myUrl)
-	print "Title: ", response["title"]
+	output.append("Title: " + response["title"])
 
 	response = alchemyapi.author("url", myUrl)
-	print "Author: ", response["author"]
+	output.append("Author: " + response["author"])
 
 	response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -27,8 +31,7 @@ def readArticle(myUrl):
 
 	if response['status'] == 'OK':
 		for entity in response['entities']:
-			print "Text: ", entity['text']
-			print "Type: ", entity['type']
+			output.append("Text: " + entity['text'] + "Type: " + entity['type'])
 			if entity.get('quotations'):
 				print "Quotes: "
 				for quote in entity['quotations']:
@@ -48,7 +51,7 @@ def readArticle(myUrl):
 	else:
 		print "Error in concept call"
 
-	return [1,2,3,4]
+	return output
 
 	# print ""
 	# print "Keywords"
