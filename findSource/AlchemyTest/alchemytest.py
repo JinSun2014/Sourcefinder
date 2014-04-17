@@ -31,7 +31,7 @@ def readArticle(myUrl):
 
 	if response['status'] == 'OK':
 		for entity in response['entities']:
-			output.append("Text: " + entity['text'] + "Type: " + entity['type'])
+			output.append("Text: " + entity['text'] + "\n Type: " + entity['type'])
 			if entity.get('quotations'):
 				print "Quotes: "
 				for quote in entity['quotations']:
