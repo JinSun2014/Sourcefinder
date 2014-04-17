@@ -6,53 +6,57 @@ alchemyapi = AlchemyAPI()
 #for json call only
 import json
 
-myText = "What do you think about doing this on Saturday?"
-response = alchemyapi.sentiment("text", myText)
-print "Sentiment: ", response["docSentiment"]["type"]
+def readArticle(myUrl):
 
-myUrl = sys.argv[1]
+	myText = "What do you think about doing this on Saturday?"
+	response = alchemyapi.sentiment("text", myText)
+	print "Sentiment: ", response["docSentiment"]["type"]
 
-response = alchemyapi.title("url", myUrl)
-print "Title: ", response["title"]
+	#myUrl = sys.argv[1]
 
-response = alchemyapi.author("url", myUrl)
-print "Author: ", response["author"]
+	response = alchemyapi.title("url", myUrl)
+	print "Title: ", response["title"]
 
-response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
+	response = alchemyapi.author("url", myUrl)
+	print "Author: ", response["author"]
 
-#print(json.dumps(response, indent=4))
+	response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
+
+	#print(json.dumps(response, indent=4))
 
 
-if response['status'] == 'OK':
-	for entity in response['entities']:
-		print "Text: ", entity['text']
-		print "Type: ", entity['type']
-		if entity.get('quotations'):
-			print "Quotes: "
-			for quote in entity['quotations']:
-				print quote['quotation']
-		print ""
-else:
-	print "Error in entity call"
+	if response['status'] == 'OK':
+		for entity in response['entities']:
+			print "Text: ", entity['text']
+			print "Type: ", entity['type']
+			if entity.get('quotations'):
+				print "Quotes: "
+				for quote in entity['quotations']:
+					print quote['quotation']
+			print ""
+	else:
+		print "Error in entity call"
 
-print ""
-print "Concepts"
-print ""
-response = alchemyapi.concepts('url', myUrl)
-if response['status'] == 'OK':
-	for concept in response['concepts']:
-		print "Text: ", concept['text']
-		print ""
-else:
-	print "Error in concept call"
+	print ""
+	print "Concepts"
+	print ""
+	response = alchemyapi.concepts('url', myUrl)
+	if response['status'] == 'OK':
+		for concept in response['concepts']:
+			print "Text: ", concept['text']
+			print ""
+	else:
+		print "Error in concept call"
 
-# print ""
-# print "Keywords"
-# print ""
-# response = alchemyapi.keywords('url', myUrl, { 'sentiment': 1})
-# if response['status'] == 'OK':
-# 	for keyword in response['keywords']:
-# 		print "Text: ", keyword['text']
-# 		print ""
-# else:
-# 	print("Error in Keyword extraction")
+	return "Hello"
+
+	# print ""
+	# print "Keywords"
+	# print ""
+	# response = alchemyapi.keywords('url', myUrl, { 'sentiment': 1})
+	# if response['status'] == 'OK':
+	# 	for keyword in response['keywords']:
+	# 		print "Text: ", keyword['text']
+	# 		print ""
+	# else:
+	# 	print("Error in Keyword extraction")
