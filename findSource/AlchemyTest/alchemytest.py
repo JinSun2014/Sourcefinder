@@ -27,16 +27,52 @@ def readArticle(myUrl):
 
 #Get People, takes the url and returns all the people (and potentially data) identified in the response entities
 def GetPeople(theUrl):
+
+	#added by Xiaofeng Zhu
+	responseText = alchemyapi.text('url',theUrl)
+
+	if responseText['status'] == 'OK':
+		cleanText=responseText['text'].encode('utf-8')
+	#added by Xiaofeng Zhu
+
 	response = alchemyapi.entities("url", theUrl, { 'quotations':1 })
 	person_list = []
 
 	if response['status'] == 'OK':
 		for entity in response['entities']:
 			if entity['type'] == 'Person':
-				person_list.append("name: " + entity['text'])
-				if entity.get('disambiguated'):
-					if entity['disambiguated'].get('subType'):
-						# person_list.append(" subType: " + entity['disambiguated']['subType'][0])
+
+				#added by Xiaofeng Zhu
+				personDic={}
+				personDic['name'] = entity['text'].encode('utf-8')
+
+				person=entity['text'].encode('utf-8').replace(" ", "%20")
+				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
+				personDic['linkedinLink']="https://www.linkedin.com/vsearch/p?type=people&keywords="+person
+				personDic['FacebookLink']="https://www.facebook.com/search/more/?q="+person	
+				personDic['job_title']=""
+
+				#Match job title
+				location=cleanText.find(entity['text'].encode('utf-8'))
+				subText=cleanText[location-30:location+30]
+				subresponse = alchemyapi.entities('url', subText, {'quotations':1 });
+
+				if subresponse['status'] == 'OK':
+
+					for jobentity in subresponse['entities']:
+						if (jobentity['type'] =='JobTitle'):
+							personDic['job_title']=jobentity['text'].encode('utf-8')
+							
+				person_list.append(personDic)				
+				#added by Xiaofeng Zhu
+
+				#removed by Xiaofeng Zhu
+				# person_list.append("name: " + entity['text'])
+				# if entity.get('disambiguated'):
+				# 	if entity['disambiguated'].get('subType'):
+				# 		person_list.append(" subType: " + entity['disambiguated']['subType'][0])
+				#removed by Xiaofeng Zhu
+
 				#if entity.get('quotations'):
 				#	print "Quotes: "
 				#	for quote in entity['quotations']:
