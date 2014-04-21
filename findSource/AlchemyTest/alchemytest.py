@@ -9,30 +9,34 @@ import json
 def readArticle(myUrl):
 
 	#return list
-	output = [];
-
-	#early test
-	#myText = "What do you think about doing this on Saturday?"
-	#response = alchemyapi.sentiment("text", myText)
-	#print "Sentiment: ", response["docSentiment"]["type"]
-
-	#myUrl = sys.argv[1]
+	output = {}
 
 	response = alchemyapi.title("url", myUrl)
-	output.append("Title: " + response["title"])
+	output['title'] = response["title"]
 
 	response = alchemyapi.author("url", myUrl)
-	output.append("Author: " + response["author"])
+	output['author'] = response["author"]
 
-	response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
+	#response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
 	#print(json.dumps(response, indent=4))
 
+	output['people'] = GetPeople(myUrl)
+	return output
+
+
+#Get People, takes the url and returns all the people (and potentially data) identified in the response entities
+def GetPeople(theUrl):
+	response = alchemyapi.entities("url", theUrl, { 'quotations':1 })
+	person_list = []
 
 	if response['status'] == 'OK':
 		for entity in response['entities']:
 			if entity['type'] == 'Person':
-				output.append("Text: " + entity['text'] + "\n Type: " + entity['type'])
+				person_list.append("name: " + entity['text'])
+				if entity.get('disambiguated'):
+					if entity['disambiguated'].get('subType'):
+						person_list.append(" subType: " + entity['disambiguated']['subType'][0])
 				#if entity.get('quotations'):
 				#	print "Quotes: "
 				#	for quote in entity['quotations']:
@@ -41,18 +45,12 @@ def readArticle(myUrl):
 	else:
 		print "Error in entity call"
 
-	#print ""
-	#print "Concepts"
-	#print ""
-	#response = alchemyapi.concepts('url', myUrl)
-	#if response['status'] == 'OK':
-	# 	for concept in response['concepts']:
-	# 		print "Text: ", concept['text']
-	# 		print ""
-	# else:
-	# 	print "Error in concept call"
+	return person_list
 
-	return output
+
+#def GetSubtypes(Person, response_data):
+
+
 
 	# print ""
 	# print "Keywords"
