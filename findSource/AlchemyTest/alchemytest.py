@@ -31,25 +31,26 @@ def readArticle(myUrl):
 
 	if response['status'] == 'OK':
 		for entity in response['entities']:
-			output.append("Text: " + entity['text'] + "\n Type: " + entity['type'])
-			if entity.get('quotations'):
-				print "Quotes: "
-				for quote in entity['quotations']:
-					print quote['quotation']
-			print ""
+			if entity['type'] == 'Person':
+				output.append("Text: " + entity['text'] + "\n Type: " + entity['type'])
+				#if entity.get('quotations'):
+				#	print "Quotes: "
+				#	for quote in entity['quotations']:
+				#		print quote['quotation']
+			#print ""
 	else:
 		print "Error in entity call"
 
-	print ""
-	print "Concepts"
-	print ""
-	response = alchemyapi.concepts('url', myUrl)
-	if response['status'] == 'OK':
-		for concept in response['concepts']:
-			print "Text: ", concept['text']
-			print ""
-	else:
-		print "Error in concept call"
+	#print ""
+	#print "Concepts"
+	#print ""
+	#response = alchemyapi.concepts('url', myUrl)
+	#if response['status'] == 'OK':
+	# 	for concept in response['concepts']:
+	# 		print "Text: ", concept['text']
+	# 		print ""
+	# else:
+	# 	print "Error in concept call"
 
 	return output
 
