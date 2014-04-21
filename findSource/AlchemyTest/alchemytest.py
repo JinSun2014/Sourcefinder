@@ -36,7 +36,7 @@ def GetPeople(theUrl):
 				person_list.append("name: " + entity['text'])
 				if entity.get('disambiguated'):
 					if entity['disambiguated'].get('subType'):
-						person_list.append(" subType: " + entity['disambiguated']['subType'][0])
+						# person_list.append(" subType: " + entity['disambiguated']['subType'][0])
 				#if entity.get('quotations'):
 				#	print "Quotes: "
 				#	for quote in entity['quotations']:
