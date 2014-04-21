@@ -18,6 +18,7 @@ class ResultView(ListView):
     def get_queryset(self):
         url = self.kwargs['userInput']
         list = readArticle(url)
+        print list
         return list
 
     def get_context_data(self, **kwargs):
