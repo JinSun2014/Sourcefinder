@@ -55,14 +55,14 @@ def GetPeople(theUrl):
 				#Match job title
 				location=cleanText.find(entity['text'].encode('utf-8'))
 				subText=cleanText[location-30:location+30]
-				subresponse = alchemyapi.entities('url', subText, {'quotations':1 });
+				subresponse = alchemyapi.entities('text', subText, {'quotations':1 });
 
 				if subresponse['status'] == 'OK':
 
 					for jobentity in subresponse['entities']:
 						if (jobentity['type'] =='JobTitle'):
 							personDic['job_title']=jobentity['text'].encode('utf-8')
-							
+
 				person_list.append(personDic)				
 				#added by Xiaofeng Zhu
 
