@@ -9,12 +9,25 @@
     ${ parent.css_files() }
 </%def>
 
-<h3>Result: ${ userInput }</h3>
+<h3>Result</h3>
 <div class="col-md-12">
     % if object_list:
-        % for item in object_list:
-            ${ item }<br>
-        % endfor
+        <dl class="dl-horizontal">
+            <dt>Article Title</dt>
+            <dd>${ object_list['title'] }</dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>Author</dt>
+            <dd>${ object_list['author'] }</dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dt>people</dt>
+            % for item in object_list['people']:
+                <dd>${ item }</dd>
+            % endfor
+        </dl>
     % endif
 </div>
 
