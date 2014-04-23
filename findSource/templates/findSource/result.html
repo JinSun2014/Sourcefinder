@@ -33,8 +33,8 @@
                         <!--th>#</th-->
                         <th>Name</th>
                         <th>Job Title</th>
-                        <!--th>Twiter</th>
-                        <th>LinkedIn</th>
+                        <th>Twiter</th>
+                        <!--th>LinkedIn</th>
                         <th>Facebook</th-->
                     </tr>
                 </thead>
@@ -42,9 +42,9 @@
                 % for item in object_list['people']:
                     <tr>
                         <td>${ item['name'] }</td>
-                        <!--td>${ item['job_title'] }</td>
+                        <td>${ item['job_title'] }</td>
                         <td><a href="${item['twitterLink']}">Click Me</a></td>
-                        <td><a href="${item['linkedinLink']}">Click Me</a></td>
+                        <!--td><a href="${item['linkedinLink']}">Click Me</a></td>
                         <td><a href="${item['FacebookLink']}">Click Me</a></td-->
                     </tr> 
                     % endfor
