@@ -18,7 +18,7 @@ class ResultView(ListView):
     def get_queryset(self):
         url = self.kwargs['userInput']
         list = readArticle(url)
-        print list
+        #print list
         return list
 
     def get_context_data(self, **kwargs):
@@ -26,3 +26,6 @@ class ResultView(ListView):
         user_input = self.kwargs['userInput']
         context['userInput'] = user_input
         return context
+
+class AboutView(TemplateView):
+    template_name = 'findSource/about.html'
