@@ -51,10 +51,10 @@ def GetPeople(theUrl):
 				personDic['linkedinLink']="https://www.linkedin.com/vsearch/p?type=people&keywords="+person
 				personDic['FacebookLink']="https://www.facebook.com/search/more/?q="+person	
 
-				personDic['subType']=""
-				if entity.get('disambiguated'):
-					if entity['disambiguated'].get('subType'):
-						personDic['subType']=entity['disambiguated']['subType'][0]	
+				# personDic['subType']=""
+				# if entity.get('disambiguated'):
+				# 	if entity['disambiguated'].get('subType'):
+				# 		personDic['subType']=entity['disambiguated']['subType'][0]	
 
 				personDic['quotation']=""
 				if entity.get('quotations'):	
