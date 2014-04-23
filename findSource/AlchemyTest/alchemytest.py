@@ -50,6 +50,14 @@ def GetPeople(theUrl):
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
 				personDic['linkedinLink']="https://www.linkedin.com/vsearch/p?type=people&keywords="+person
 				personDic['FacebookLink']="https://www.facebook.com/search/more/?q="+person	
+
+				if entity.get('disambiguated'):
+					if entity['disambiguated'].get('subType'):
+						personDic['subType']=entity['disambiguated']['subType'][0]	
+
+				if entity.get('quotations'):	
+					personDic['quotation']=entity['quotations'][0]['quotation']		
+											
 				personDic['job_title']=""
 
 				#Match job title
@@ -62,6 +70,8 @@ def GetPeople(theUrl):
 					for jobentity in subresponse['entities']:
 						if (jobentity['type'] =='JobTitle'):
 							personDic['job_title']=jobentity['text'].encode('utf-8')
+
+
 
 				person_list.append(personDic)				
 				#added by Xiaofeng Zhu
