@@ -13,6 +13,10 @@
 <div class="col-md-12">
     % if object_list:
         <dl class="dl-horizontal">
+            <dt>Article url</dt>
+            <dd><a href = ${ object_list['url'] }>${ object_list['url'] }</a></dd>
+        </dl>
+        <dl class="dl-horizontal">
             <dt>Article Title</dt>
             <dd>${ object_list['title'] }</dd>
         </dl>
