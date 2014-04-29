@@ -9,13 +9,9 @@
     ${ parent.css_files() }
 </%def>
 
-<h3>Result</h3>
+<h3>Result for ${ userInput}: </h3>
 <div class="col-md-12">
-    % if object_list:
-        <dl class="dl-horizontal">
-            <dt>Article url</dt>
-            <dd><a href = ${ object_list['url'] }>${ object_list['url'] }</a></dd>
-        </dl>
+    ##% if object_list:
         <dl class="dl-horizontal">
             <dt>Article Title</dt>
             <dd>${ object_list['title'] }</dd>
@@ -30,25 +26,25 @@
             <dt>people</dt>
             <dd>
                 <table class="table">
-                ##% for item in object_list['people']:
+                    ##% for item in object_list['people']:
                 ##% endfor
                 <thead>
                     <tr>
                         <!--th>#</th-->
                         <th>Name</th>
                         <th>Job Title</th>
-                        <th>quotation</th>                        
+                        <th>quotation</th> 
                         <th>Twiter</th>
                         <!--th>LinkedIn</th>
                         <th>Facebook</th-->
                     </tr>
                 </thead>
                 <tbody>
-                % for item in object_list['people']:
+                    % for item in object_list['people']:
                     <tr>
                         <td>${ item['name'] }</td>
                         <td>${ item['job_title'] }</td>
-                        <td>${ item['quotation'] }</td>                        
+                        <td>${ item['quotation'] }</td> 
                         <td><a href="${item['twitterLink']}">Click Me</a></td>
                         <!--td><a href="${item['linkedinLink']}">Click Me</a></td>
                         <td><a href="${item['FacebookLink']}">Click Me</a></td-->
@@ -58,6 +54,6 @@
                 </table>
             </dd>
         </dl>
-    % endif
+    ##% endif
 </div>
 

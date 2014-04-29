@@ -2,7 +2,8 @@
 <%def name="title()">Sourcerous - result</%def>
 <%def name="js_defer()">
     ${ parent.js_defer()}
-    <script type="text/javascript" src="/static/findSource/js/findSource.js"></script>
+    <!--script type="text/javascript" src="/static/findSource/js/findSource.js"></script-->
+    <script src="/static/findSource/js/test.js"></script>
 </%def>
 
 <%def name="css_files()">
@@ -11,6 +12,10 @@
 
 <h3>Result for ${ userInput }</h3>
 <div class="col-md-12">
+    <button class="btn btn-success" id="test">Send Json</button>
+    <div style="display:none">
+        <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
+    </div>
     % if object_list:
         <ul class="list-groupi">
         % for i in object_list:

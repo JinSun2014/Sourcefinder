@@ -8,21 +8,21 @@ import json
 
 def readArticle(myUrl):
 
-	#return list
-	output = {}
+    #return list
+    output = {}
 
-	response = alchemyapi.title("url", myUrl)
-	output['title'] = response["title"]
+    response = alchemyapi.title("url", myUrl)
+    output['title'] = response['title']
 
-	response = alchemyapi.author("url", myUrl)
-	output['author'] = response["author"]
+    response = alchemyapi.author("url", myUrl)
+    output['author'] = response["author"]
 
-	#response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
+    #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
-	#print(json.dumps(response, indent=4))
+    #print(json.dumps(response, indent=4))
 
-	output['people'] = GetPeople(myUrl)
-	return output
+    output['people'] = GetPeople(myUrl)
+    return output
 
 
 #Get People, takes the url and returns all the people (and potentially data) identified in the response entities
@@ -49,17 +49,16 @@ def GetPeople(theUrl):
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
 				personDic['linkedinLink']="https://www.linkedin.com/vsearch/p?type=people&keywords="+person
-				personDic['FacebookLink']="https://www.facebook.com/search/more/?q="+person	
+				personDic['FacebookLink']="https://www.facebook.com/search/more/?q="+person
 
 				# personDic['subType']=""
 				# if entity.get('disambiguated'):
 				# 	if entity['disambiguated'].get('subType'):
-				# 		personDic['subType']=entity['disambiguated']['subType'][0]	
+				# 		personDic['subType']=entity['disambiguated']['subType'][0]
 
 				personDic['quotation']=""
-				if entity.get('quotations'):	
-					personDic['quotation']=entity['quotations'][0]['quotation']		
-											
+				if entity.get('quotations'):
+					personDic['quotation']=entity['quotations'][0]['quotation']
 				personDic['job_title']=""
 
 				#Match job title
@@ -75,7 +74,7 @@ def GetPeople(theUrl):
 
 
 
-				person_list.append(personDic)				
+				person_list.append(personDic)
 				#added by Xiaofeng Zhu
 
 				#removed by Xiaofeng Zhu
