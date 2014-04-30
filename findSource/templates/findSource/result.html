@@ -11,23 +11,22 @@
 
 <h3>Result for ${ userInput}: </h3>
 <div class="col-md-12">
-    ##% if object_list:
+    % if object_list:
+        % for article in object_list:
         <dl class="dl-horizontal">
             <dt>Article Title</dt>
-            <dd>${ object_list['title'] }</dd>
+            <dd>${ article['title'] }</dd>
         </dl>
 
         <dl class="dl-horizontal">
             <dt>Author</dt>
-            <dd>${ object_list['author'] }</dd>
+            <dd>${ article['author'] }</dd>
         </dl>
 
         <dl class="dl-horizontal">
             <dt>people</dt>
             <dd>
                 <table class="table">
-                    ##% for item in object_list['people']:
-                ##% endfor
                 <thead>
                     <tr>
                         <!--th>#</th-->
@@ -40,7 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    % for item in object_list['people']:
+                    % for item in article['people']:
                     <tr>
                         <td>${ item['name'] }</td>
                         <td>${ item['job_title'] }</td>
@@ -54,6 +53,7 @@
                 </table>
             </dd>
         </dl>
-    ##% endif
+        % endfor
+    % endif
 </div>
 

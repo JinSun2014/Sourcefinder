@@ -60,9 +60,17 @@ class ResultView(ListView, JSONResponseMixin):
 
 
     def get_queryset(self):
-        url = self.request.session['url']
-        list = readArticle(url)
+        list = []
+        urls = self.request.session['url']
+        urllist = urls.split(';')
+        for url in urllist:
+            list.append(readArticle(url))
         return list
+
+        '''url = self.request.session['url']
+        list = readArticle(url)
+        print list
+        return list'''
 
     def get_context_data(self, **kwargs):
         context = super(ResultView, self).get_context_data(**kwargs)
