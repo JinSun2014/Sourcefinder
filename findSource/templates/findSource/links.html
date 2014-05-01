@@ -17,16 +17,15 @@
         <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
     </div>
     % if object_list:
+        TABLE BELOW
         <table class="table">
             <tr>
                 <th>Article</th>
             </tr>
         % for i in object_list:
             <tr class="list-group-item">
-                <dl class="dl-horizontal">
-                    <dd><a href = ${ i['url'] }>${ i['title'] }</a></dd>
-                    <input type="checkbox" value="Get People">
-                </dl>
+                <a href = ${ i['url'] }>${ i['title'] }</a>
+                <input type="checkbox" value="Get People">
             </tr>
         % endfor
         </table>
