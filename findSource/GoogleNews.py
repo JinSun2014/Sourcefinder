@@ -1,11 +1,16 @@
 #! /usr/bin/env python2.7.6
 
+import urllib
 import urllib2
 import xml.etree.ElementTree as ET
 
 def GoogleNews(subject):
     result = []
-    url = r"http://news.google.com/news?q=" + subject + r"&output=rss"
+    data = {}
+    data['q'] = subject
+    data['output'] = 'rss'
+    #url_data = urllib.urlencode(data)
+    url = r"http://news.google.com/news?" + urllib.urlencode({'q': subject, 'output': 'rss'})
     response = urllib2.urlopen(url)
     XMLTree = response.read()
     root = ET.fromstring(XMLTree)
