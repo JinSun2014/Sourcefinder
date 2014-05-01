@@ -28,7 +28,7 @@
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
                 <td>Get People ${ x }: <input type="checkbox" id=${ x }></td>
             </tr>
-            <% x++ %>
+            <% x = x + 1 %>
         % endfor
         </table>
     % endif
