@@ -21,14 +21,14 @@
             <tr>
                 <th>Article</th>
             </tr>
-        % def x = 0
+        <% x = 0 %>
         % for i in object_list:
 
             <tr>
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
                 <td>Get People ${ x }: <input type="checkbox" id=${ x }></td>
             </tr>
-            % x++
+            <% x++ %>
         % endfor
         </table>
     % endif
