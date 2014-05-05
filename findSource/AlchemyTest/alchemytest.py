@@ -12,10 +12,10 @@ def readArticle(myUrl):
     output = {}
 
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title']
+    output['title'] = response['title'].decode('utf8', 'ignore').encode('utf-8')
 
     response = alchemyapi.author("url", myUrl)
-    output['author'] = response["author"]
+    output['author'] = response["author"].decode('utf8', 'ignore').encode('utf-8')
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -32,7 +32,7 @@ def GetPeople(theUrl):
 	responseText = alchemyapi.text('url',theUrl)
 
 	if responseText['status'] == 'OK':
-		cleanText=responseText['text'].encode('utf-8')
+		cleanText=responseText['text'].decode('utf8', 'ignore').encode('ascii', 'ignore')
 	#added by Xiaofeng Zhu
 
 	response = alchemyapi.entities("url", theUrl, { 'quotations':1 })
@@ -44,7 +44,7 @@ def GetPeople(theUrl):
 
 				#added by Xiaofeng Zhu
 				personDic={}
-				personDic['name'] = entity['text'].encode('utf-8')
+				personDic['name'] = entity['text'].decode('utf8', 'ignore').encode('ascii', 'ignore')
 
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
@@ -62,7 +62,7 @@ def GetPeople(theUrl):
 				personDic['job_title']=""
 
 				#Match job title
-				location=cleanText.find(entity['text'].encode('utf-8'))
+				location=cleanText.find(entity['text'].decode('utf8', 'ignore').encode('ascii', 'ignore'))
 				subText=cleanText[location-30:location+30]
 				subresponse = alchemyapi.entities('text', subText, {'quotations':1 });
 
@@ -70,7 +70,7 @@ def GetPeople(theUrl):
 
 					for jobentity in subresponse['entities']:
 						if (jobentity['type'] =='JobTitle'):
-							personDic['job_title']=jobentity['text'].encode('utf-8')
+							personDic['job_title']=jobentity['text'].decode('utf8', 'ignore').encode('ascii', 'ignore')
 
 
 

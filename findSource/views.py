@@ -72,6 +72,33 @@ class ResultView(ListView, JSONResponseMixin):
         print list
         return list'''
 
+    '''
+    Extend the list...
+
+    Example: 
+    flatten (list)
+
+    '''
+    def flatten(l):
+        for el in l:
+            if hasattr(el, "__iter__") and not isinstance(el, basestring):
+                for sub in flatten(el):
+                    yield sub
+            else:
+                yield el     
+
+    def clean(data_dict):
+        data_values=data_dict.values()
+
+
+        joined_list = [x for x in flatten(data_values)]  
+        # print joined_list  
+        trim_list = list(set(joined_list))  
+
+        counter_total=Counter(joined_list)  
+        # print counter_total  
+
+
     def get_context_data(self, **kwargs):
         context = super(ResultView, self).get_context_data(**kwargs)
         #context.update(csrf(self.request))
