@@ -16,13 +16,15 @@ $(document).ready(function(){
         //alert(txt);
 
         var token = $("input[name='csrfmiddlewaretoken']").val()
-        $.post('/Sourcerous/comcast/result', {
+        targetUrl = window.location
+        targetUrl += '/result'
+        $.post(targetUrl, {
             url: txt,
             csrfmiddlewaretoken: token
         }, function(data){
             if (data.success){
                 //alert("success");
-                window.location.href = "/Sourcerous/comcast/result"
+                window.location.href = targetUrl;
             }
             else{
                 alert('fail');
