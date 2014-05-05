@@ -12,10 +12,10 @@ def readArticle(myUrl):
     output = {}
 
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title']
+    output['title'] = response['title'].encode('utf-8')
 
     response = alchemyapi.author("url", myUrl)
-    output['author'] = response["author"]
+    output['author'] = response["author"].encode('utf-8')
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -32,7 +32,7 @@ def GetPeople(theUrl):
 	responseText = alchemyapi.text('url',theUrl)
 
 	if responseText['status'] == 'OK':
-		cleanText=responseText['text'].encode('utf-8')
+		cleanText=responseText['text'].decode('utf8', 'ignore').encode('utf-8')
 	#added by Xiaofeng Zhu
 
 	response = alchemyapi.entities("url", theUrl, { 'quotations':1 })
@@ -44,7 +44,7 @@ def GetPeople(theUrl):
 
 				#added by Xiaofeng Zhu
 				personDic={}
-				personDic['name'] = entity['text'].encode('utf-8')
+				personDic['name'] = entity['text'].decode('utf8', 'ignore').encode('utf-8')
 
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
