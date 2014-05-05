@@ -3,7 +3,7 @@ $(document).ready(function(){
         var articles = document.forms[0].articles;
 
         var output = [];
-        var txt;
+        var txt = '';
         var i;
         for (i=0;i<articles.length;i++)
           {
