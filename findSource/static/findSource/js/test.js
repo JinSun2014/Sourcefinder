@@ -3,18 +3,17 @@ $(document).ready(function(){
         var articles = document.forms[0].articles;
 
         var output = [];
-        var index = 0;
+        var txt;
         var i;
         for (i=0;i<articles.length;i++)
           {
           if (articles[i].checked)
             {
-              output[index] = articles[i].value;
-              index += 1;
+              txt = txt + articles[i].value + ';'
             }
           }
 
-        alert(output);
+        alert(txt);
 
         var token = $("input[name='csrfmiddlewaretoken']").val()
         $.post('/Sourcerous/comcast/result', {
