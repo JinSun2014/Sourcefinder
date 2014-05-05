@@ -44,7 +44,8 @@ def GetPeople(theUrl):
 
 				#added by Xiaofeng Zhu
 				personDic={}
-				personDic['name'] = entity['text'].encode('utf-8')
+				
+				personDic['name'] = unicode(entity['text'], errors='ignore').encode('utf-8')
 
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
