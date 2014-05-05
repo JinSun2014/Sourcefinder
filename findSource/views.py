@@ -62,7 +62,7 @@ class ResultView(ListView, JSONResponseMixin):
     def get_queryset(self):
         list = []
         urls = self.request.session['url']
-        urllist = urls.split(';')
+        urllist = urls[:-1].split(';')
         for url in urllist:
             list.append(readArticle(url))
         return list
