@@ -13,6 +13,7 @@
 <h3>Result for ${ userInput }</h3>
 <div class="col-md-12">
     <button class="btn btn-success" id="test">Send Json</button>
+
     <div style="display:none">
         <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
     </div>
@@ -22,14 +23,16 @@
                 <th>Article</th>
             </tr>
         <% x = 0 %>
+        <form action="form_action.asp">
         % for i in object_list:
 
             <tr>
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
-                <td>Get People ${ x }: <input type="checkbox" id=${ x }></td>
+                <td>Get People ${ x }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }></td>
             </tr>
             <% x = x + 1 %>
         % endfor
+        </form>
         </table>
     % endif
 </div>
