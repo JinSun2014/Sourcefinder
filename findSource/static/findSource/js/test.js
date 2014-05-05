@@ -2,8 +2,6 @@ $(document).ready(function(){
     $('#test').click(function(){
         var articles = document.forms[0].articles;
 
-        alert(articles);
-
         var output = [];
         var index = 0;
         var i;
@@ -11,7 +9,7 @@ $(document).ready(function(){
           {
           if (articles[i].checked)
             {
-              output[index] = output[index] + articles[i].value + " ";
+              output[index] = articles[i].value;
               index += 1;
             }
           }
