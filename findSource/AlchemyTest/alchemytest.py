@@ -44,7 +44,8 @@ def GetPeople(theUrl):
 
 				#added by Xiaofeng Zhu
 				personDic={}
-				personDic['name'] = entity['text'].decode('utf8', 'ignore').encode('ascii', 'ignore')
+
+				personDic['name'] = entity['text'].replace(u'\xa0', u' ').decode('utf8', 'ignore').encode('ascii', 'ignore')
 
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
@@ -62,7 +63,7 @@ def GetPeople(theUrl):
 				personDic['job_title']=""
 
 				#Match job title
-				location=cleanText.find(entity['text'].decode('utf8', 'ignore').encode('ascii', 'ignore'))
+				location=cleanText.find(entity['text'].replace(u'\xa0', u' ').decode('utf8', 'ignore').encode('ascii', 'ignore'))
 				subText=cleanText[location-30:location+30]
 				subresponse = alchemyapi.entities('text', subText, {'quotations':1 });
 
