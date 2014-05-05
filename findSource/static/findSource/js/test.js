@@ -13,11 +13,11 @@ $(document).ready(function(){
             }
           }
 
-        alert(txt);
+        //alert(txt);
 
         var token = $("input[name='csrfmiddlewaretoken']").val()
         $.post('/Sourcerous/comcast/result', {
-            url: "http://www.cnbc.com/id/101614448;http://www.prnewswire.com/news-releases/comcast-announces-new-600-seat-customer-support-center-set-to-open-this-summer-in-hudson-nh-257951051.html",
+            url: txt,
             csrfmiddlewaretoken: token
         }, function(data){
             if (data.success){
