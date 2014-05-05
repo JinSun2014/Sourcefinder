@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#test').click(function(){
         var token = $("input[name='csrfmiddlewaretoken']").val()
         $.post('/Sourcerous/comcast/result', {
-            url: "http://www.cnbc.com/id/101614448;http://info.broadcast.hc360.com/2014/04/210924597022.shtml",
+            url: "http://www.cnbc.com/id/101614448;http://www.prnewswire.com/news-releases/comcast-announces-new-600-seat-customer-support-center-set-to-open-this-summer-in-hudson-nh-257951051.html",
             csrfmiddlewaretoken: token
         }, function(data){
             if (data.success){
