@@ -12,10 +12,10 @@ def readArticle(myUrl):
     output = {}
 
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title'].encode('utf-8')
+    output['title'] = response['title'].decode('utf8', 'ignore').encode('utf-8')
 
     response = alchemyapi.author("url", myUrl)
-    output['author'] = response["author"].encode('utf-8')
+    output['author'] = response["author"].decode('utf8', 'ignore').encode('utf-8')
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -62,7 +62,7 @@ def GetPeople(theUrl):
 				personDic['job_title']=""
 
 				#Match job title
-				location=cleanText.find(entity['text'].encode('utf-8'))
+				location=cleanText.find(entity['text'].decode('utf8', 'ignore').encode('utf-8'))
 				subText=cleanText[location-30:location+30]
 				subresponse = alchemyapi.entities('text', subText, {'quotations':1 });
 
@@ -70,7 +70,7 @@ def GetPeople(theUrl):
 
 					for jobentity in subresponse['entities']:
 						if (jobentity['type'] =='JobTitle'):
-							personDic['job_title']=jobentity['text'].encode('utf-8')
+							personDic['job_title']=jobentity['text'].decode('utf8', 'ignore').encode('utf-8')
 
 
 
