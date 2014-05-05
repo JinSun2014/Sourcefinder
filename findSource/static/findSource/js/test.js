@@ -1,19 +1,22 @@
 $(document).ready(function(){
     $('#test').click(function(){
         var articles = document.forms[0].articles;
-        var txt = [];
+
+        alert(articles);
+
+        var output = [];
         var index = 0;
         var i;
         for (i=0;i<articles.length;i++)
           {
           if (articles[i].checked)
             {
-              txt = txt + articles[index].value + " ";
+              output[index] = output[index] + articles[i].value + " ";
               index += 1;
             }
           }
 
-        alert(txt);
+        alert(output);
 
         var token = $("input[name='csrfmiddlewaretoken']").val()
         $.post('/Sourcerous/comcast/result', {
