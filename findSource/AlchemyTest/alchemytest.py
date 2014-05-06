@@ -12,7 +12,7 @@ def readArticle(myUrl):
     output = {}
 
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title']
+    # output['title'] = response['title']
 
     response = alchemyapi.author("url", myUrl)
     output['author'] = response["author"]
