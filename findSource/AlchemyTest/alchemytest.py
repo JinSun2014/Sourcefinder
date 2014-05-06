@@ -12,10 +12,10 @@ def readArticle(myUrl):
     output = {}
 
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title'].encode('utf-8')
+    output['title'] = response['title']
 
     response = alchemyapi.author("url", myUrl)
-    output['author'] = response["author"].encode('utf-8')
+    output['author'] = response["author"]
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -45,7 +45,7 @@ def GetPeople(theUrl):
 				#added by Xiaofeng Zhu
 				personDic={}
 				
-				personDic['name'] = unicode(entity['text'], errors='ignore').encode('utf-8')
+				personDic['name'] = entity['text'].encode('utf-8')
 
 				person=entity['text'].encode('utf-8').replace(" ", "%20")
 				personDic['twitterLink']="https://twitter.com/search?q="+person+"&src=corr&mode=users"
