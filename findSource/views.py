@@ -1,4 +1,4 @@
-#from django.shortcuts import render
+# -*- coding: utf-8 -*-
 import json
 
 from django.http import HttpResponse
@@ -60,12 +60,14 @@ class ResultView(ListView, JSONResponseMixin):
 
 
     def get_queryset(self):
-        list = []
+        joined_list = []
+        trim_list = []
         urls = self.request.session['url']
         urllist = urls[:-1].split(';')
         for url in urllist:
-            list.append(readArticle(url))
-        return list
+            joined_list.append(readArticle(url))
+        trim_list = list(set(joined_list)) 
+        return trim_list
 
         '''url = self.request.session['url']
         list = readArticle(url)
