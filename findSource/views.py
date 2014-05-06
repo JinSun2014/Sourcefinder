@@ -66,7 +66,7 @@ class ResultView(ListView, JSONResponseMixin):
         urllist = urls[:-1].split(';')
         for url in urllist:
             joined_list.append(readArticle(url))
-        trim_list = list(set(joined_list)) 
+        trim_list = joined_list 
         return trim_list
 
         '''url = self.request.session['url']
