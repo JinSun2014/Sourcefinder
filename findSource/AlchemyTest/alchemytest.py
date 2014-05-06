@@ -11,11 +11,11 @@ def readArticle(myUrl):
     #return list
     output = {}
 
-    # response = alchemyapi.title("url", myUrl)
-    # output['title'] = response['title']
+    response = alchemyapi.title("url", myUrl)
+    output['title'] = response['title']
 
-    # response = alchemyapi.author("url", myUrl)
-    # output['author'] = response["author"]
+    response = alchemyapi.author("url", myUrl)
+    output['author'] = response["author"]
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
