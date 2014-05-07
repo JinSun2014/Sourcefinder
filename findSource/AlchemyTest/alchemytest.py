@@ -15,7 +15,10 @@ def readArticle(myUrl):
     output['title'] = response['title'].encode('utf-8', 'ignore')
 
     response = alchemyapi.author("url", myUrl)
+
     output['author'] = response["author"].encode('utf-8', 'ignore')
+    if output['author'] =='':
+    	output['author'] = 'anonym'
 
     #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
 
@@ -57,14 +60,14 @@ def GetPeople(theUrl):
 				# 	if entity['disambiguated'].get('subType'):
 				# 		personDic['subType']=entity['disambiguated']['subType'][0]
 
-				personDic['quotation']=""
+				personDic['quotation']="N/A"
 				if entity.get('quotations'):
 					personDic['quotation']=entity['quotations'][0]['quotation']
-				personDic['job_title']=""
+				personDic['job_title']="N/A"
 
 				#Match job title
 				location=cleanText.find(entity['text'].encode('utf-8', 'ignore'))
-				subText=cleanText[location-30:location+30]
+				subText=cleanText[location-40:location+40]
 				subresponse = alchemyapi.entities('text', subText, {'quotations':1 });
 
 				if subresponse['status'] == 'OK':

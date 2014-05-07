@@ -23,36 +23,46 @@
             <dd>${ article['author'] }</dd>
         </dl>
 
-        <dl class="dl-horizontal">
-            <dt>people</dt>
-            <dd>
-                <table class="table">
-                <thead>
-                    <tr>
-                        <!--th>#</th-->
-                        <th>Name</th>
-                        <th>Job Title</th>
-                        <th>quotation</th> 
-                        <th>Twiter</th>
-                        <!--th>LinkedIn</th>
-                        <th>Facebook</th-->
-                    </tr>
-                </thead>
-                <tbody>
-                    % for item in article['people']:
-                    <tr>
-                        <td>${ item['name'] }</td>
-                        <td>${ item['job_title'] }</td>
-                        <td>${ item['quotation'] }</td> 
-                        <td><a href="${item['twitterLink']}">Click Me</a></td>
-                        <!--td><a href="${item['linkedinLink']}">Click Me</a></td>
-                        <td><a href="${item['FacebookLink']}">Click Me</a></td-->
-                    </tr> 
-                    % endfor
-                </tbody>
-                </table>
-            </dd>
-        </dl>
+        % if article['people']:
+            <dl class="dl-horizontal">
+                <dt>people</dt>
+                <dd>
+
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Job Title</th>
+                            <th>quotation</th> 
+                            <th>Twitter</th>
+                            <!--th>LinkedIn</th>
+                            <th>Facebook</th-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        % for item in article['people']:
+                        <tr>
+                            <td><a href="/Sourcerous/${ item['name'] }">${ item['name'] }</a></td>
+                            <td>${ item['job_title'] }</td>
+                            <td>${ item['quotation'] }</td> 
+                            <td><a href="${item['twitterLink']}">Click Me</a></td>
+                            <!--td><a href="${item['linkedinLink']}">Click Me</a></td>
+                            <td><a href="${item['FacebookLink']}">Click Me</a></td-->
+                        </tr> 
+                        % endfor
+                    </tbody>
+                    </table>                  
+                </dd>
+            </dl>
+
+        % else:
+            <dl class="dl-horizontal">
+                <dt>people</dt>
+                <dd>        
+                No source found in this article  
+                </dd>
+            </dl>            
+        %endif
         % endfor
     % endif
 </div>

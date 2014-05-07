@@ -12,7 +12,7 @@
 
 <h3>Result for ${ userInput }</h3>
 <div class="col-md-12">
-    <button class="btn btn-success" id="test">Send Json</button>
+    <button class="btn btn-success" id="test">Find Source</button>
 
     <div style="display:none">
         <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
@@ -28,7 +28,7 @@
 
             <tr>
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
-                <td>Get People ${ x }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }></td>
+                <td>Select Article ${ x+1 }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }></td>
             </tr>
             <% x = x + 1 %>
         % endfor
