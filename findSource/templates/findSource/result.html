@@ -1,4 +1,4 @@
-<%inherit file="base.html" />
+﻿<%inherit file="base.html" />
 <%def name="title()">Sourcerous - result</%def>
 <%def name="js_defer()">
     ${ parent.js_defer()}
@@ -42,7 +42,7 @@
                     <tbody>
                         % for item in article['people']:
                         <tr>
-                            <td><a href="/Sourcerous/${ item['name'] }">${ item['name'] }</a></td>
+                            <td><a href="/Sourcerous/${ unicode(item['name']) }">${ unicode(item['name']) }</a></td>
                             <td>${ item['job_title'] }</td>
                             <td>${ item['quotation'] }</td> 
                             <td><a href="${item['twitterLink']}">Click Me</a></td>
