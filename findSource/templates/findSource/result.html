@@ -9,7 +9,7 @@
     ${ parent.css_files() }
 </%def>
 
-<h3>Result for ${ userInput}: </h3>
+<h3>Result for ${ userInput }: </h3>
 <div class="col-md-12">
     % if object_list:
         % for article in object_list:
@@ -42,7 +42,7 @@
                     <tbody>
                         % for item in article['people']:
                         <tr>
-                            <td><a href="/Sourcerous/${ unicode(item['name']) }">${ unicode(item['name']) }</a></td>
+                            <td><a href="/Sourcerous/${ item['name'] + '%20' + userInput }">${ unicode(item['name']) }</a></td>
                             <td>${ item['job_title'] }</td>
                             <td>${ item['quotation'] }</td> 
                             <td><a href="${item['twitterLink']}">Click Me</a></td>
