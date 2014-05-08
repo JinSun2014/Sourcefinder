@@ -1,13 +1,8 @@
 Django==1.6.2
 Mako==0.9.1
 MarkupSafe==0.19
-MySQL-python==1.2.5
-argparse==1.2.1
-dj-database-url==0.3.0
-dj-static==0.0.5
 djmako==0.4
 gunicorn==18.0
-pystache==0.5.3
 static==1.0.2
 wsgiref==0.1.2
  

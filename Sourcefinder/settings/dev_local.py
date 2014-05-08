@@ -2,7 +2,7 @@ from Sourcefinder.settings import *
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': '',
         'NAME': 'db',
         'USER': 'db_user',
         'PASSWORD': 'db_pwd',

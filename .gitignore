@@ -2,4 +2,4 @@
 venv
 staticfiles
 requirements.txt
-configuration.py
+Sourcefinder/settings/configuration.py
