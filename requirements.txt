@@ -1,8 +1,0 @@
-Django==1.6.2
-Mako==0.9.1
-MarkupSafe==0.19
-djmako==0.4
-gunicorn==18.0
-static==1.0.2
-wsgiref==0.1.2
- 
