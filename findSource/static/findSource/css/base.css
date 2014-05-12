@@ -1,7 +1,18 @@
 body {
     padding-top: 60px;
+    background-color: beige;
 }
 
 textarea {
     resize: vertical;
+}
+
+h2 {
+
+	font-size: 45pt;
+}
+
+.searchbar {
+	background-color: orange;
+
 }
