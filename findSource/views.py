@@ -9,6 +9,7 @@ from django.utils.encoding import smart_str as _
 from findSource.AlchemyTest.alchemytest import readArticle
 
 from findSource.GoogleNews import GoogleNews
+from findSource.YahooFinance import YahooFinance
 from django.core.context_processors import csrf
 
 import sys
@@ -46,7 +47,9 @@ class LinksView(ListView):
 
     def get_queryset(self):
         userInput = self.kwargs['userInput']
+        list = []
         list = GoogleNews(userInput)
+        list += YahooFinance(userInput)
         return list
 
     def get_context_data(self, **kwargs):
@@ -84,7 +87,6 @@ class ResultView(ListView, JSONResponseMixin):
                 p['job_title'] = unicode(p['job_title'])
 
 
-        print trim_list
         return trim_list
 
         '''url = self.request.session['url']
