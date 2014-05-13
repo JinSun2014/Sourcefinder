@@ -13,8 +13,6 @@ $(document).ready(function(){
             }
           }
 
-        //alert(txt);
-
         var token = $("input[name='csrfmiddlewaretoken']").val()
         targetUrl = window.location
         targetUrl += '/result'

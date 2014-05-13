@@ -30,12 +30,15 @@ def YahooFinance(subject):
     XMLTree = response.read()
     root = ET.fromstring(XMLTree)
     result = []
+    titlelist = []
 
     for r in root[0].findall('item'):
         title = r[0].text.encode('utf8')
-        if 'video' not in title and 'audio' not in title and '$$' not in title:
+        if 'video' not in title and 'audio' not in title\
+            and '$$' not in title and title not in titlelist:
             link = r'http://' + r[1].text.split(r'http://')[-1]
             result.append({'title': title, 'url': link})
+            titlelist.append(title)
 
     return result
 

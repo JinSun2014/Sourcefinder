@@ -10,30 +10,32 @@
     ${ parent.css_files() }
 </%def>
 
-<h3>${ userInput }</h3>
+<h3>Articles for  ${ userInput } :</h3>
+<br>
 <div class="col-md-12">
 
     <div style="display:none">
         <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
     </div>
     % if object_list:
-        <table class="table">
-            <tr>
-                <th>Article</th>
-            </tr>
         <% x = 0 %>
         <form action="form_action.asp">
-        % for i in object_list:
-
+        % for (site, links) in object_list.iteritems():
+        <table class="table">
+            <!--tr>
+                <th>Article</th>
+            </tr-->
+             <h4> Results in ${ site }</h4>
+            % for i in links:
             <tr>
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
-                <td>Select Article ${ x+1 }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }>
-                </td>
+                <td>Select Article ${ x+1 }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }></td>
             </tr>
             <% x = x + 1 %>
+          % endfor
+        </table>
         % endfor
         </form>
-        </table>
     % endif
 
     <button class="btn btn-success" id="test">Find Source</button>
