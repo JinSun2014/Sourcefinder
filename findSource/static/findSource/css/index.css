@@ -1,0 +1,149 @@
+body {
+	background: #222; /* #A38ED1; */
+	margin: 0;
+	padding: 0;
+}
+
+#maintitle {
+	font-family:arial;
+	font-weight:900;
+	font-size:44;
+	color:white;
+	margin-left:-60px;
+	margin-top:30px;
+}
+
+.box-frame {
+	background-color:#222;
+	opacity:0.9; 
+	filter:alpha(opacity=90); /* For IE8 and earlier */
+	z-index: 100;
+	position: fixed;
+
+	top: 15%;
+	left: 50%;
+	margin-left: -250px; 
+	height: 250px;
+	width: 500px;
+
+	-webkit-filter: blur(1px);
+	-moz-filter: blur(1px);
+	-o-filter: blur(1px);
+	-ms-filter: blur(1px);
+	filter: blur(1px);
+}
+
+form {
+	z-index: 9999;
+	position: fixed;
+
+	top: 15%;
+	left: 50%;
+	margin-left: -100px; 
+	height: 500px;
+	width: 200px;
+}
+
+
+.background-image {
+	
+	background: #222 url(/static/findSource/img/newspaper.jpg) no-repeat top left;
+	background-clip: padding-box;
+	position: fixed;
+
+
+	border-radius:			3px;
+	-moz-border-radius:		3px;
+	-o-border-radius:		3px;
+	-webkit-border-radius:	3px;
+
+	box-shadow:			0 1px 5px #000;
+	-moz-box-shadow:	0 1px 5px #000;
+	-o-box-shadow:		0 1px 5px #000;
+	-webkit-box-shadow:	0 1px 5px #000;
+
+	height: 850px;
+	padding: 0;
+	width: 1350px;
+
+	top: 50%;
+	left: 50%;
+	margin-top: -425px;
+	margin-left: -675px; 
+
+}
+
+input {
+	background: transparent;
+	background: rgba(163, 135, 106, 0.15);
+	background.clip: padding-box;
+
+	border: none;
+	border-radius: 			26px;
+	-moz-border-radius: 	26px;
+	-o-border-radius: 		26px;
+	-webkit-border-radius: 	26px;
+
+	box-shadow:			inset 0 0 5px rgba(0, 0, 0, 0.1),
+						0 1px 0 rgba(255, 255, 255, 0.5),
+						inset 0 1px 2px rgba(0, 0, 0, 0.3),
+						0 0 40px rgba(255, 255, 255, 0.3);
+	-moz-box-shadow: 	inset 0 0 5px rgba(0, 0, 0, 0.1),
+						0 1px 0 rgba(255, 255, 255, 0.5),
+						inset 0 1px 2px, rgba(0, 0, 0, 0.3),
+						0 0 40px rgba(255, 255, 255, 0.3);
+	-o-box-shadow:		inset 0 0 5px rgba(0, 0, 0, 0.1),
+						0 1px 0 rgba(255, 255, 255, 0.5),
+						inset 0 1px 2px rgba(0, 0, 0, 0.3),
+						0 0 40px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow:	inset 0 0 5px rgba(0, 0, 0, 0.1),
+						0 1px 0 rgba(255, 255, 255, 0.5),
+						inset 0 1px 2px rgba(0, 0, 0, 0.3),
+						0 0 40px rgba(255, 255, 255, 0.3);
+
+	color: white;
+	height: 26px;
+	margin: 20px 80px 0 0;
+	outline: none;
+	padding: 0 20px 0 35px;
+
+	transition:			all .1s linear;
+	-moz-transition:	all .1s	linear;
+	-o-transition:		all .1s	linear;
+	-webkit-transition:	all .1s linear;
+
+	width: 185px;
+}
+
+input:focus {
+	font-size:14;
+	background: transparent;
+	background: rgba(163, 135, 106, 0.2);
+
+	box-shadow: 		inset 0 0 5px rgba(0, 0, 0, 0.2),
+						0 1px 0 rgba(255, 255, 255, 0.7),
+						inset 0 1px 2px rgba(0, 0, 0, 0.4),
+						0 0 40px rgba(255, 255, 255, 0.5);
+	-mox-box-shadow:	inset 0 0 5px rgba(0, 0, 0, 0.2),
+						0 1px 0 rgba(255, 255, 255, 0.7),
+						inset 0 1px 2px rgba(0, 0, 0, 0.4),
+						0 0 40px rgba(255, 255, 255, 0.5);
+	-o-box-shadow:		inset 0 0 5px rgba(255, 255, 255, 0.5),
+						0 1px 0 rgba(255, 255, 255, 0.7),
+						inset 0 1px 2px rgba(0, 0, 0, 0.4),
+						0 0 40px rgba(255, 255, 255, 0.5);
+
+	width:200px;
+}
+
+label {
+	background: transparent url(/static/findSource/img/icon-search.png) no-repeat top left;
+	cursor: pointer;
+	display: block;
+	height: 17px;
+	left: 10px;
+	position: relative;
+	text-indent: -99999px;
+	top: -21px;
+	width: 16px;
+}
