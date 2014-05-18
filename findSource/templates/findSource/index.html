@@ -6,16 +6,28 @@
 </%def>
 <%def name="css_files()">
     ${ parent.css_files() }
+    <link href="/static/findSource/css/index.css" rel="stylesheet">
 </%def>
 
+<div class="background-image"></div>
+<div class="box-frame"></div>
+<form>
+	<h2 id="maintitle">Sourcerous</h2>
+	<input type="text" id="user-input">
+	<label for="search" id="search">Search</label>
+	<br>
+	<center><a href="about" style="text-decoration:underline;color:white;">About</a></center>
+</form>
+
+<!-- 
 <center><h2>Sourcerous</h2></center>
 <br>
 
 
 
-<!-- <label for="user-input">Please input a company name</label> -->
 <div class="row">
 	<div style="padding:0;"></div>
 	<div style="padding:0; float:left; margin-left:25%; width:45%;"><input class="form-control" id="user-input"></div>
 	<div style="padding:0;"><button id="search" class="btn btn-default" style="background-color:black;"><span class="glyphicon glyphicon-arrow-right" style="color:white;"></span></button></div>
 </div>
+-->
