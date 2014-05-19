@@ -11,7 +11,7 @@ $('#user-input').keypress(function(e) {
         var input = $('#user-input').val();
         if (input){
             current_url = window.location.pathname;
-            alert(current_url + input + '/result');
+            //alert(current_url + input + '/result');
             window.location.href = current_url + input + '/result';
         }
     }
