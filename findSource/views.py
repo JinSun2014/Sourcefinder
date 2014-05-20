@@ -6,12 +6,11 @@ import json
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.utils.encoding import smart_str as _
-from django.core.context_processors import csrf
-
 from findSource.AlchemyTest.alchemytest import readArticle
+
 from findSource.GoogleNews import GoogleNews
 from findSource.YahooFinance import YahooFinance
-from findSource.wiki import wiki
+from django.core.context_processors import csrf
 
 import sys
 reload(sys)
@@ -51,7 +50,6 @@ class LinksView(ListView):
         list = {}
         list['Google News'] = GoogleNews(userInput)
         list['Yahoo Finance'] = YahooFinance(userInput)
-        list['Wikipedia'] = wiki(userInput)
         return list
 
     def get_context_data(self, **kwargs):
@@ -74,31 +72,19 @@ class ResultView(ListView, JSONResponseMixin):
     def get_queryset(self):
         joined_list = []
         trim_list = []
-        #urls = self.request.session['url']
-
-        userInput = self.kwargs['userInput']
-        list = {}
-        list['Google News'] = GoogleNews(userInput)[:3]
-        list['Yahoo Finance'] = YahooFinance(userInput)[:3]
-        list['Wikipedia'] = wiki(userInput)[:]
-
-        result = {}
-        for (site, info) in list.iteritems():
-            joined_list = []
-            for item in info:
-                joined_list.append(readArticle(item['url']))
-            #clean data
-            trim_list = joined_list
-            for text in trim_list:
-                text['author'] =_(text['author'])
-                text['title'] = unicode(text['title'])
-                for p in text['people']:
-                    p['name'] = (p['name']).encode('utf-8')
-                    p['quotation'] = unicode(p['quotation'])
-                    p['job_title'] = unicode(p['job_title'])
-            result[site] = trim_list
-
-        return result
+        urls = self.request.session['url']
+        urllist = urls[:-1].split(';')
+        for url in urllist:
+            joined_list.append(readArticle(url))
+        trim_list = joined_list
+        for text in trim_list:
+            text['author'] =_(text['author'])
+            text['title'] = unicode(text['title'])
+            for p in text['people']:
+                p['name'] = (p['name']).encode('utf-8')
+                p['quotation'] = unicode(p['quotation'])
+                p['job_title'] = unicode(p['job_title'])
+        return trim_list
 
     def get_context_data(self, **kwargs):
         context = super(ResultView, self).get_context_data(**kwargs)

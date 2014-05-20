@@ -11,10 +11,8 @@
 
 <h3>Result for ${ userInput }: </h3>
 <div class="col-md-12">
-  % if object_list:
-  % for (site, info) in object_list.iteritems():
-    <p4>Results in ${ site }:</p4>
-        % for article in info:
+    % if object_list:
+        % for article in object_list:
         <dl class="dl-horizontal">
             <dt>Article Title</dt>
             <dd>${ article['title'] }</dd>
@@ -68,7 +66,6 @@
             </dl>            
         %endif
         % endfor
-      % endfor
     % endif
 </div>
 

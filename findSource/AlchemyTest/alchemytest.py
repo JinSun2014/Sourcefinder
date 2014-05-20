@@ -13,8 +13,9 @@ def readArticle(myUrl):
 
     response = alchemyapi.title("url", myUrl)
     output['title'] = response['title'].encode('utf-8', 'ignore')
-	if output['title'] =='':
-		output['title'] = 'No title found'    
+    if output['title'] =='':
+    	output['title']='No title found'
+
 
     response = alchemyapi.author("url", myUrl)
 
@@ -27,19 +28,11 @@ def readArticle(myUrl):
     #print(json.dumps(response, indent=4))
 
     output['people'] = GetPeople(myUrl)
-    output['url'] = myUrl
     return output
 
 
 #Get People, takes the url and returns all the people (and potentially data) identified in the response entities
 def GetPeople(theUrl):
-
-	# #added by Xiaofeng Zhu
-	# responseText = alchemyapi.text('url',theUrl)
-
-	# if responseText['status'] == 'OK':
-	# 	cleanText=responseText['text'].encode('utf-8', 'ignore')
-	# #added by Xiaofeng Zhu
 
 	person_list = []
 
