@@ -28,6 +28,7 @@
              <h4> Results in ${ site }</h4>
             % for i in links:
             <tr>
+                <td>${ i['original_source'] }</td>
                 <td><a href = ${ i['url'] }>${ i['title'] }</a></td>
                 <td>Select Article ${ x+1 }: <input type="checkbox" name="articles" value=${ i['url'] } id=${ x }></td>
             </tr>

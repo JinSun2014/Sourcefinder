@@ -14,8 +14,10 @@ def wiki(subject):
     except wikipedia.exceptions.DisambiguationError as e:
         print e.options
         return []
+        
+    original_source='wikipedia'
 
-    result.append({'title': response.title, 'url': response.url})
+    result.append({'title': response.title, 'url': response.url, 'original_source':original_source})
     return result
 
 if __name__ == "__main__":
