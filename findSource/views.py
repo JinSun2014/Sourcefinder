@@ -78,8 +78,8 @@ class ResultView(ListView, JSONResponseMixin):
 
         userInput = self.kwargs['userInput']
         list = {}
-        list['Google News'] = GoogleNews(userInput)[:1]
-        list['Yahoo Finance'] = YahooFinance(userInput)[:1]
+        list['Google News'] = GoogleNews(userInput)[:3]
+        list['Yahoo Finance'] = YahooFinance(userInput)[:3]
         list['Wikipedia'] = wiki(userInput)[:]
 
         result = {}
