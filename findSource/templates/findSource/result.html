@@ -41,22 +41,19 @@
                             <th>Job Title</th>
                             <th>quotation</th> 
                             <th>LinkedIn</th>
-                            <!--th>Twitter</th>
-                            <th>Facebook</th-->
                         </tr>
                     </thead>
                     <tbody>
-                        % for item in article['people']:
+                        % for name in sorted(article['people'].keys()):
                         <tr>
-                            <td><a href="/Sourcerous/${ item['name'] + '%20' + userInput }">${ item['name'] } </a></td>
-                            <td>${ item['company'] }</td>
-                            <td>${ item['job_title'] }</td>
-                            <td>${ item['quotation'] }</td> 
-                            <td><a href="${item['linkedInLink']}">Click Me</a></td>
-                            <!--td><a href="${item['twitterLink']}">Click Me</a></td>
-                            <td><a href="${item['FacebookLink']}">Click Me</a></td-->
+                            <td><a href="/Sourcerous/${ name+ '%20' + userInput }">${ name } </a></td>
+                            <td>${ article['people'][name]['company'] }</td>
+                            <td>${ article['people'][name]['job_title'] }</td>
+                            <td>${ article['people'][name]['quotation'] }</td> 
+                            <td><a href="${article['people'][name]['linkedInLink']}">Click Me</a></td>
                         </tr> 
-                        % endfor
+                        % endfor                    
+
                     </tbody>
                     </table>                  
                 </dd>
