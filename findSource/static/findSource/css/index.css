@@ -33,7 +33,7 @@ body {
 	filter: blur(1px);
 }
 
-form {
+#form {
 	z-index: 9999;
 	position: fixed;
 
