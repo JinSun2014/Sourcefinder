@@ -2,8 +2,8 @@ $(document).ready(function(){
   $(function(){
     var urlsList = JSON.parse($.cookie("URLsInfo"));
     $.removeCookie("URLsList");
-    var url = urlsList.urls.split(';');
-    url.pop()
+    var urlL = urlsList.urls.split(';');
+    urlL.pop()
 
     /*var delay = (function(){
       var timer = 0;
@@ -12,10 +12,11 @@ $(document).ready(function(){
         timer = setTimeout(callback, ms);
       };
     })();*/
+   //console.log(urlL);
     for (var i = 0; i != 12; i++){
-      setTimeout(function(){
+      //setTimeout(function(){
         $.post('/Sourcerous/getInfo', {
-          url: url[i]
+          url: urlL[i]
         }, function(response){
           if (response.success){
             var append_content = '<p>'
@@ -28,8 +29,8 @@ $(document).ready(function(){
           } else {
             alert("fail");
           }
-        });
-      }, 10000 * i);
+        })
+      //}, 10000 * i);
     }
 
   });
