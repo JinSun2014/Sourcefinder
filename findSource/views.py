@@ -4,9 +4,10 @@
 import json
 
 from django.http import HttpResponse
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, View
 from django.utils.encoding import smart_str as _
-from django.core.context_processors import csrf
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 from findSource.AlchemyTest.alchemytest import readArticle
 from findSource.GoogleNews import GoogleNews
@@ -35,6 +36,53 @@ class JSONResponseMixin(object):
         # objects -- such as Django model instances or querysets
         # -- can be serialized as JSON.
         return json.dumps(context)
+
+class URLsView(JSONResponseMixin, View):
+    http_method_names = [u'post']
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(URLsView, self).dispatch(request, *args, **kwargs)
+
+    @method_decorator(csrf_exempt)
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            userInput = kwargs['userInput']
+            urls = ''
+            titles = ''
+            list = {}
+            list['Google News'] = GoogleNews(userInput)
+            list['Yahoo Finance'] = YahooFinance(userInput)
+            list['Wikipedia'] = wiki(userInput)
+            for (k, v) in list.iteritems():
+                for items in v:
+                    urls =  urls + items['url'] + ';'
+                    titles = titles + items['title'] + ';'
+
+            context = {'success': True, 'urls': urls}
+            list['success'] = True
+            return self.get_json_response(self.convert_context_to_json(context))
+
+class ResultsView(TemplateView):
+    template_name = "findSource/NameList.html"
+
+
+class GetInfoView(JSONResponseMixin, View):
+    http_method_names = [u'post']
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(GetInfoView, self).dispatch(request, *args, **kwargs)
+
+    @method_decorator(csrf_exempt)
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            url = self.request.POST.get('url', '')
+            Info = readArticle(url)
+            print Info
+            context = {'success': True}
+            Info['success'] = True
+            return self.get_json_response(self.convert_context_to_json(Info))
 
 class IndexView(TemplateView):
     template_name = 'findSource/index.html'
@@ -111,3 +159,5 @@ class ResultView(ListView, JSONResponseMixin):
 
 class AboutView(TemplateView):
     template_name = 'findSource/about.html'
+
+

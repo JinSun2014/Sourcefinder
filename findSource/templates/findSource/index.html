@@ -12,6 +12,9 @@
 <div class="background-image"></div>
 <div class="box-frame"></div>
 <div id="form">
+  <div style="display:none">
+      <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
+  </div>
 	<h2 id="maintitle">Sourcerous</h2>
 	<input type="text" id="user-input">
 	<label for="search" id="search">Search</label>
