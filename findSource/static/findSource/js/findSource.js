@@ -23,6 +23,7 @@ $('#user-input').keypress(function(e) {
 function sendAjax(input){
   current_url = window.location.pathname;
   var token = $("input[name='csrfmiddlewaretoken']").val()
+  $.removeCookie("URLsInfo", {path: '/'});
   $.post(current_url + input + '/urls', {
     csrfmiddlewaretoken: token
   }, function(response){
@@ -49,6 +50,3 @@ function checkLoad()
    }
 }
 
-$("#peopleName").click(function(){
-  console.log($(this).text());
-});

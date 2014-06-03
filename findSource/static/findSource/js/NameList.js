@@ -44,7 +44,7 @@ $(document).ready(function(){
                   append_content += '<br>'; 
                 }  
 
-                append_content += '<p><h4><p id="peoplNName">'+key+'</p></h4></p>'; 
+                append_content += '<h4 id=\'peopleName\' onclick="Name(\'' + key + '\')">'+key+'</h4>'; 
                 append_content += '<p><h5><b>Company: </b>'+response['people'][key]['company'] +'</h5></p>';
                 append_content += '<p><h5><b>Job Title: </b>'+response['people'][key]['job_title'] +'</h5></p>';
                 append_content += '<p><h5><b>LinkedIn: </b><a href='+response['people'][key]['linkedInLink']+'>'+'Click Me'+'</a></h5></p>';
@@ -90,9 +90,37 @@ $(document).ready(function(){
         })
         if (--i) myloop(i);
       }, 5)
-    })(24);
+    })(12);
 
   });
+
+
 });
 
+function Name(key){
+  SendAjax(key);
+  $("#preLoaderDiv").show();
+  $("#content").hide();
 
+}
+
+function SendAjax(input){
+  current_url = window.location.pathname;
+  var token = $("input[name='csrfmiddlewaretoken']").val()
+  $.removeCookie("URLsInfo", {path: '/'});
+  $.post('/Sourcerous/' + input + '/urls', {
+    csrfmiddlewaretoken: token
+  }, function(response){
+    if (response.success){
+      $.cookie("URLsInfo", JSON.stringify(response));
+      var res= $.cookie("URLsInfo");
+      /*var resb = JSON.parse(res);
+      console.log(resb);
+      $.removeCookie("URLsInfo");*/
+      window.location.href = '/Sourcerous/'  + input + '/result';
+    }
+    else{
+      alert('fail');
+    }
+  });
+}
