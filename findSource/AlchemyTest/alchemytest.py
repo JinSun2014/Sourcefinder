@@ -66,7 +66,7 @@ def GetPeople(theUrl):
 						if entity['type'] == 'Person' or entity['type'] == 'Company'or entity['type'] == 'JobTitle':
 							relation_entity_dict[entity['type']]=entity['text'].encode('utf-8')
 
-			if (relation_entity_dict.has_key('Person') and len(relation_entity_dict)>1):
+			if (relation_entity_dict.has_key('Person') and len(relation_entity_dict)>0):
 				personDic={}
 				name_key= relation_entity_dict['Person'].encode('utf-8')	
 
