@@ -44,7 +44,7 @@ $(document).ready(function(){
                   append_content += '<br>'; 
                 }  
 
-                append_content += '<h4 id=\'peopleName\' onclick="Name(\'' + key + '\')">'+key+'</h4>'; 
+                append_content += '<h4><a id=\'peopleName\' onclick="Name(\'' + key + '\')">'+key+'</a></h4>'; 
                 append_content += '<p><h5><b>Company: </b>'+response['people'][key]['company'] +'</h5></p>';
                 append_content += '<p><h5><b>Job Title: </b>'+response['people'][key]['job_title'] +'</h5></p>';
                 append_content += '<p><h5><b>LinkedIn: </b><a href='+response['people'][key]['linkedInLink']+'>'+'Click Me'+'</a></h5></p>';
