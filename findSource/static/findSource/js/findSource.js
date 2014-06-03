@@ -49,6 +49,6 @@ function checkLoad()
    }
 }
 
-$("#name").click(function(){
+$("#peopleName").click(function(){
   console.log($(this).text());
 });
