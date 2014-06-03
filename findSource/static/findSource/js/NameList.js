@@ -44,7 +44,7 @@ $(document).ready(function(){
                   append_content += '<br>'; 
                 }  
 
-                append_content += '<p><h4><a href='+'/Sourcerous/'+key+'/result'+'>'+key+'</a></h4></p>'; 
+                append_content += '<p><h4><p id="name">'+key+'</p></h4></p>'; 
                 append_content += '<p><h5><b>Company: </b>'+response['people'][key]['company'] +'</h5></p>';
                 append_content += '<p><h5><b>Job Title: </b>'+response['people'][key]['job_title'] +'</h5></p>';
                 append_content += '<p><h5><b>LinkedIn: </b><a href='+response['people'][key]['linkedInLink']+'>'+'Click Me'+'</a></h5></p>';
@@ -89,7 +89,7 @@ $(document).ready(function(){
 
         })
         if (--i) myloop(i);
-      }, 5000)
+      }, 5)
     })(12);
 
   });

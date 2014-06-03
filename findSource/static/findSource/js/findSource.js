@@ -50,4 +50,5 @@ function checkLoad()
 }
 
 $("#name").click(function(){
+  console.log($(this).text());
 });
