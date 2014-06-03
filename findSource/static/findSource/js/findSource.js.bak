@@ -14,8 +14,6 @@ $('#user-input').keypress(function(e) {
         var input = $('#user-input').val();
         if (input){
           sendAjax(input);
-          $("#preLoaderDiv").show();     
-          $("#content").hide();          
         }
     }
 });
@@ -38,13 +36,4 @@ function sendAjax(input){
       alert('fail');
     }
   });
-}
-
-
-function checkLoad()
-{
-   if(document.getElementById("bottom"))
-   {
-    document.getElementById("preLoaderDiv").style.visibility = "hidden";
-   }
 }

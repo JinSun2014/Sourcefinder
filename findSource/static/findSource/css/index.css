@@ -1,9 +1,16 @@
 body {
-	background: #222; /* #A38ED1; */
-	margin: 0;
+	background: #222 url(/static/findSource/img/newspaper.jpg) no-repeat top left;	
+	margin: 0 auto;
 	padding: 0;
 }
-
+#content
+{
+	height: 693px;
+	width: 963px;
+	padding: 0x;
+	float: none;
+	background: transparent url(/static/findSource/img/news-bg.png) no-repeat top left;
+}
 #maintitle {
 	font-family:arial;
 	font-weight:900;
@@ -35,13 +42,13 @@ body {
 
 #form {
 	z-index: 9999;
-	position: fixed;
+	position: relative;
 
-	top: 15%;
-	left: 50%;
+	top: 23%;
+	left: 44%;
 	margin-left: -100px; 
-	height: 500px;
-	width: 200px;
+	height: 100px;
+	width: 300px;
 }
 
 
@@ -112,7 +119,7 @@ input {
 	-o-transition:		all .1s	linear;
 	-webkit-transition:	all .1s linear;
 
-	width: 185px;
+	width: 250px;
 }
 
 input:focus {
@@ -133,7 +140,7 @@ input:focus {
 						inset 0 1px 2px rgba(0, 0, 0, 0.4),
 						0 0 40px rgba(255, 255, 255, 0.5);
 
-	width:200px;
+	width:300px;
 }
 
 label {
@@ -147,3 +154,7 @@ label {
 	top: -21px;
 	width: 16px;
 }
+
+
+
+

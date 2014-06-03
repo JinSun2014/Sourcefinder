@@ -3,14 +3,46 @@
 <%def name="js_defer()">
     ${ parent.js_defer()}
     <script type="text/javascript" src="/static/findSource/js/NameList.js"></script>
+    <script type="text/javascript" src="/static/findSource/js/findSource.js"></script>
     <script src="/static/findSource/js/test.js"></script>
+
+    <script type="text/javascript">
+        setInterval("checkLoad()",500);
+    </script>    
 </%def>
 
 <%def name="css_files()">
     ${ parent.css_files() }
 </%def>
 
-<div class="container">
-  <h3>Results</h3>
-  <div id="results"></div>
+<div id="preLoaderDiv">
+    <center>
+        <img src="/static/findSource/img/loader.gif" />
+    </center>
 </div>
+
+<center>
+    <div id ="maincontent">
+    <div id ="content">
+		<h3>Results</h3>
+		<div class="col-md-12">
+		  <div id="results"></div>
+		</div>
+
+    </div>
+    </div>
+</center>
+
+<!--div id="bottom"></div-->
+<script type="text/javascript">
+    function checkLoad()
+    {
+       if(document.getElementById("bottom"))
+       {
+        document.getElementById("preLoaderDiv").style.visibility = "hidden";
+       }
+    }
+</script>
+
+
+

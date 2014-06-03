@@ -1,6 +1,6 @@
 body {
     padding-top: 60px;
-    background-color: beige;
+    background-image: url(/static/findSource/img/result-bg.png) repeat top left; 
 }
 
 textarea {

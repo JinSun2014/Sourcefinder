@@ -6,29 +6,27 @@ alchemyapi = AlchemyAPI()
 #for json call only
 import json
 
-def readArticle(myUrl):
+def readArticle(myUrl, original_source):
 
-    #return list
     output = {}
-
     response = alchemyapi.title("url", myUrl)
-    output['title'] = response['title'].encode('utf-8', 'ignore')
-    if output['title'] =='':
-    	output['title']='No title found'
-
-
-    response = alchemyapi.author("url", myUrl)
-
-    output['author'] = response["author"].encode('utf-8', 'ignore')
+    response_a = alchemyapi.author("url", myUrl)
+    output['author'] = response_a["author"].encode('utf-8', 'ignore')
     if output['author'] =='':
     	output['author'] = 'anonym'
 
-    #response = alchemyapi.entities("url", myUrl, { 'quotations':1 })
-
-    #print(json.dumps(response, indent=4))
 
     output['people'] = GetPeople(myUrl)
-    output['url'] = myUrl
+    if (len(output['people'])==0):
+    	output={}
+    else:
+    	output['url'] = myUrl
+    	output['original_source'] = original_source
+
+    	output['title'] = response['title'].encode('utf-8', 'ignore')
+    	if output['title'] =='':
+    		output['title']='No title found'
+	
     return output
 
 
@@ -103,13 +101,14 @@ def GetPeople(theUrl):
 				else:
 					person_list_dict[name_key]['freq']=person_list_dict[name_key]['freq']+1
 
-		[(k,person_list_dict[k]) for k in sorted(person_list_dict.keys())] 
-		
+		# [(k,person_list_dict[k]) for k in sorted(person_list_dict.keys())] 
 			
 	else:
 		print('Error in relation extaction call: ', response['statusInfo'])
 	
 
 	return person_list_dict
+
+
 
 

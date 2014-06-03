@@ -9,18 +9,24 @@
     <link href="/static/findSource/css/index.css" rel="stylesheet">
 </%def>
 
-<div class="background-image"></div>
-<div class="box-frame"></div>
-<div id="form">
-  <div style="display:none">
-      <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
-  </div>
-	<h2 id="maintitle">Sourcerous</h2>
-	<input type="text" id="user-input">
-	<label for="search" id="search">Search</label>
-	<br>
-	<center><a href="about" style="text-decoration:underline;color:white;">About</a></center>
+<div id="preLoaderDiv" hidden='true'>
+    <center>
+	    <img src="/static/findSource/img/reading.gif" />
+    </center>
 </div>
+
+<center>
+<div id="content">
+
+	<div id="form">
+	  <div style="display:none">
+	      <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}" />
+	  </div>
+		<input type="text" id="user-input" placeholder="Please input a keyword">
+		<label for="search" id="search">Search</label>
+	</div>
+</div>
+</center>
 
 <!-- 
 <center><h2>Sourcerous</h2></center>
