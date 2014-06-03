@@ -48,3 +48,6 @@ function checkLoad()
     document.getElementById("preLoaderDiv").style.visibility = "hidden";
    }
 }
+
+$("#name").click(function(){
+});
