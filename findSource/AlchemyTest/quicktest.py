@@ -37,10 +37,10 @@ def worker(num, url, result):
 
 #list = [];
 def getSources(topic):
-	urls = ['http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told', 
-			'http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told']
-	#urls = GoogleNews('Integrys Energy')[:1]
-	#urls.extend(YahooFinance('Integrys Energy'))
+	#urls = ['http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told', 
+	#		'http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told']
+	urls = GoogleNews(topic)
+	urls.extend(YahooFinance(topic))
 	print urls
 
 	print len(urls)
@@ -71,7 +71,7 @@ def getSources(topic):
 # print "===Full Time: " + str(threadend - threadstart) + "==="
 # print "===CLOCK TIME: " + str(threadclockend - threadclock) + "==="
 
-print getSources('test')
+#print getSources('test')
 
 
 

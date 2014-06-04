@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 from findSource.AlchemyTest.alchemytest import readArticle
+from findSource.AlchemyTest.quicktest import getSources
 from findSource.GoogleNews import GoogleNews
 from findSource.YahooFinance import YahooFinance
 from findSource.wiki import wiki
@@ -167,4 +168,20 @@ class ResultView(ListView, JSONResponseMixin):
 class AboutView(TemplateView):
     template_name = 'findSource/about.html'
 
+class MultiThreadResultView(ListView):
+    template_name = "findSource/MultiThreadResult.html"
+
+    def get_queryset(self):
+        userInput = self.kwargs['userInput']
+        resultList = getSources(userInput)
+        print resultList
+        return resultList
+
+    def get_context_data(self, **kwargs):
+        context = super(MultiThreadResultView, self).get_context_data(**kwargs)
+        #context.update(csrf(self.request))
+        user_input = self.kwargs['userInput']
+        print user_input
+        context['userInput'] = user_input
+        return context
 

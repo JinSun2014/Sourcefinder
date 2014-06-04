@@ -1,0 +1,48 @@
+﻿<%inherit file="base.html" />
+<%def name="title()">Sourcerous - result</%def>
+<%def name="js_defer()">
+${ parent.js_defer()}
+<script type="text/javascript" src="/static/findSource/js/findSource.js"></script>
+</%def>
+
+<%def name="css_files()">
+${ parent.css_files() }
+</%def>
+
+<h3>Result for ${ userInput }: </h3>
+<div class="col-md-12">
+  % if object_list:
+
+  <dl class="dl-horizontal">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Job Title</th>
+          <th>quotation</th> 
+          <th>LinkedIn</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        % for article in object_list:
+        % for name in sorted(article['people'].keys()):
+        <tr>
+          <td><a href="/Sourcerous/${ name+ '%20' + userInput }">${ name } </a></td>
+          <td>${ article['people'][name]['company'] }</td>
+          <td>${ article['people'][name]['job_title'] }</td>
+          <td>${ article['people'][name]['quotation'] }</td> 
+          <td><a href="${article['people'][name]['linkedInLink']}">Click Me</a></td>
+          <td><a href="${article['url']}">Article</a></td>
+        </tr> 
+        % endfor                    
+
+        % endfor
+      </tbody>
+    </table>                  
+    </dd>
+  </dl>
+  % endif
+</div>
+
