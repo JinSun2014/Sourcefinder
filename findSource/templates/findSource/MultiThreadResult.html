@@ -29,7 +29,7 @@ ${ parent.css_files() }
         % for article in object_list:
         % for name in sorted(article['people'].keys()):
         <tr>
-          <td><a href="/Sourcerous/${ name+ '%20' + userInput }">${ name } </a></td>
+          <td><a href="/Sourcerous/${ name+ ' ' + userInput + '/result' }">${ name } </a></td>
           <td>${ article['people'][name]['company'] }</td>
           <td>${ article['people'][name]['job_title'] }</td>
           <td>${ article['people'][name]['quotation'] }</td> 
