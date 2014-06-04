@@ -33,7 +33,7 @@ def readArticle(myUrl, original_source):
 #Get People, takes the url and returns all the people (and potentially data) identified in the response entities
 def GetPeople(theUrl):
 	person_list_dict = {}
-
+	output={}
 	people_response = alchemyapi.entities("url", theUrl, { 'quotations':1 })
 
 	name_quotation={}
@@ -105,9 +105,12 @@ def GetPeople(theUrl):
 			
 	else:
 		print('Error in relation extaction call: ', response['statusInfo'])
+
+	output['people']=person_list_dict
+	output['url']=theUrl
 	
 
-	return person_list_dict
+	return output
 
 
 

@@ -19,6 +19,7 @@ def worker(num, url, result):
 	#print readArticle(url, 'Some News Source')
 	#print GetPeople(url)
 	#print GetPeople(url)
+
 	result.append(GetPeople(url))
 	return
 
@@ -36,7 +37,8 @@ def worker(num, url, result):
 
 #list = [];
 def getSources(topic):
-	urls = ['http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told']
+	urls = ['http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told', 
+			'http://www.postcrescent.com/article/20140517/APC03/305170255/Integrys-Energy-growing-shareholders-told']
 	#urls = GoogleNews('Integrys Energy')[:1]
 	#urls.extend(YahooFinance('Integrys Energy'))
 	print urls
