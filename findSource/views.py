@@ -173,9 +173,9 @@ class MultiThreadResultView(ListView):
 
     def get_queryset(self):
         userInput = self.kwargs['userInput']
-        #resultList = getSources(userInput)
+        resultList = getSources(userInput)
         #print resultList
-        return []
+        return resultList
 
     def get_context_data(self, **kwargs):
         context = super(MultiThreadResultView, self).get_context_data(**kwargs)

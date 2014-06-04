@@ -62,30 +62,4 @@ def getSources(topic):
 
 	return names
 
-# threadend = time.clock()
-# threadclockend = time.time()
-
-# for item in names:
-#  	print item
-
-# print "===Full Time: " + str(threadend - threadstart) + "==="
-# print "===CLOCK TIME: " + str(threadclockend - threadclock) + "==="
-
-#print getSources('test')
-
-
-
-
-
-# clockstart = time.time()
-# fullstart = time.clock()
-
-# for i in range(0, numUrls-1):
-# 	print "===Article " + str(i) + "===\n" + str(GetPeople(urls[i]))
-
-
-
-# fullend = time.clock()
-# clockend = time.time()
-# print "===Full Time: " + str(fullend - fullstart) + "==="
-# print "===CLOCK TIME: " + str(clockend - clockstart) + "==="
+#print getSources("Facebook")
